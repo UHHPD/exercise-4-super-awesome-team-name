@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <cmath>
 
 class Data {
  public:
@@ -15,6 +16,14 @@ class Data {
   double binHigh(int i) const { return m_bins.back();}
   double error(int i) const { return m_error[i]; }
   int checkCompatibility(const Data& in, int n);
+ Data operator+(const Data& in) {
+Data y; 
+        for (int i = 0; i < this->size(); ++i){
+       y.measurement(i) = (this->measurement(i)*(this->error(i) )+ in.measurement(i)* in.error(i))/(this->error(i) + in.error(i));
+            y.error(i) = sqrt(1/(this->error(i) + in.error(i)));
+        }
+        return y;
+    }
 
  private:
   Data() {}  // disallow empty data set
