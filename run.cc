@@ -67,7 +67,7 @@ int main() {
   runTests();
   cout << "******************************************************" << endl;
   // create an object which holds data of experiment A
-    vector<Data> data;
+    std::vector<Data> data;
   Data datA("exp_A");
   Data datB("exp_B");
   Data datC("exp_C");
@@ -80,6 +80,7 @@ data.push_back(datD);
   cout << "bin 27: from " << datA.binLow(27) << " to " << datA.binHigh(27)
        << endl;
   cout << "measurement of experiment A,B,C,D in bin 27: " << datA.measurement(27) << ", " << datB.measurement(27) << ", " << datC.measurement(27) << ", " << datD.measurement(27) << endl;
-
+ // check if the data from experiment A and B are compatible
+    cout << "number of incompatible bins between A and B: " << datA.checkCompatibility(datB, 2) << endl;
   return 0;
 }

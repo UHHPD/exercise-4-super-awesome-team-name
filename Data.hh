@@ -14,10 +14,12 @@ class Data {
   double binLow(int i) const { return m_bins.front(); }
   double binHigh(int i) const { return m_bins.back();}
   double error(int i) const { return m_error[i]; }
+  int checkCompatibility(const Data& in, int n);
 
  private:
   Data() {}  // disallow empty data set
   void assertSizes();
+  bool compare(Data i, Data j,int bin, int n) const;
   std::vector<double> m_data;
   std::vector<double> m_error;
   std::vector<double> m_bins;
