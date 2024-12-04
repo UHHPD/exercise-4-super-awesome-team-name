@@ -83,7 +83,17 @@ data.push_back(datD);
        << endl;
   cout << "measurement of experiment A,B,C,D in bin 27: " << datA.measurement(27) << ", " << datB.measurement(27) << ", " << datC.measurement(27) << ", " << datD.measurement(27) << endl;
  // check if the data from experiment A and B are compatible
-    cout << "number of incompatible bins between A and B: " << datA.checkCompatibility(datB, 2) << endl;
+  for (Data i : {datA, datB, datC, datD}){
+    
+  
+    cout << "number of incompatible bins between " << i.name() << " and A with 2 sigma: " << i.checkCompatibility(datA, 2) << " " << i.name() << " and B: "<< i.checkCompatibility(datB,2)<< " " << i.name() <<" and C: " << i.checkCompatibility(datC,2) << " " << i.name() << " and D: " << i.checkCompatibility(datD,2) << endl;
+  cout << "number of incompatible bins between " << i.name() << " and A with 3 sigma: " << i.checkCompatibility(datA, 3) << " " << i.name() << " and B: " << i.checkCompatibility(datB,3) << " " <<i.name() << " and C: " << i.checkCompatibility(datC,3)<< " " << i.name() << " and D: "  << i.checkCompatibility(datD,3) <<endl;
+  }
+
+  cout << "chi_2 of experiment A: " << datA.chi_2() << endl;
+  cout << "chi_2 of experiment B: " << datB.chi_2() << endl;
+  cout << "chi_2 of experiment C: " << datC.chi_2() << endl;
+  cout << "chi_2 of experiment D: " << datD.chi_2() << endl;
     Data sumAB = datA + datB;
     cout << "measurement of sum of A and B in bin 27: " << sumAB.measurement(27) << endl;
   return 0;

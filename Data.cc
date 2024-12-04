@@ -15,7 +15,7 @@ double f_x(double x){
   double gamma = 0.08;
   double delta = 0.015;
 
-  return alpha + beta * x + gamma * x * x + gamma * exp(-delta*x);
+  return alpha + beta * x + gamma * exp(-delta*x);
 }
 
 // take two data points and compare their difference with the error
@@ -55,6 +55,7 @@ Data::Data(const std::string& filename) {
       file >> error;
       m_error.push_back(error);
     }
+m_name = filename;
 
   // done! close the file
   file.close();
