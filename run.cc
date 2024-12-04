@@ -60,6 +60,8 @@ void runTests() {
     std::cout << (test() ? " ok" : " FAILED!") << std::endl;
 }
 
+
+
 int main() {
   using namespace std;
 
@@ -67,13 +69,37 @@ int main() {
   runTests();
   cout << "******************************************************" << endl;
   // create an object which holds data of experiment A
+    std::vector<Data> data;
   Data datA("exp_A");
-
+  Data datB("exp_B");
+  Data datC("exp_C");
+  Data datD("exp_D");
+data.push_back(datA);
+data.push_back(datB);
+data.push_back(datC);
+data.push_back(datD);
   // here is the data from experiment A
   cout << "bin 27: from " << datA.binLow(27) << " to " << datA.binHigh(27)
        << endl;
-  cout << "measurement of experiment A in bin 27: " << datA.measurement(27)
-       << endl;
+  cout << "measurement of experiment A,B,C,D in bin 27: " << datA.measurement(27) << ", " << datB.measurement(27) << ", " << datC.measurement(27) << ", " << datD.measurement(27) << endl;
+ // check if the data from experiment A and B are compatible
+  for (Data i : {datA, datB, datC, datD}){
+    
+  
+    cout << "number of incompatible bins between " << i.name() << " and A with 2 sigma: " << i.checkCompatibility(datA, 2) << " " << i.name() << " and B: "<< i.checkCompatibility(datB,2)<< " " << i.name() <<" and C: " << i.checkCompatibility(datC,2) << " " << i.name() << " and D: " << i.checkCompatibility(datD,2) << endl;
+  cout << "number of incompatible bins between " << i.name() << " and A with 3 sigma: " << i.checkCompatibility(datA, 3) << " " << i.name() << " and B: " << i.checkCompatibility(datB,3) << " " <<i.name() << " and C: " << i.checkCompatibility(datC,3)<< " " << i.name() << " and D: "  << i.checkCompatibility(datD,3) <<endl;
+  }
 
+  cout << "chi_2 of experiment A: " << datA.chi_2() << endl;
+  cout << "chi_2 of experiment B: " << datB.chi_2() << endl;
+  cout << "chi_2 of experiment C: " << datC.chi_2() << endl;
+  cout << "chi_2 of experiment D: " << datD.chi_2() << endl;
+
+  Data sumABCD = datA + datB + datC + datD;
+  cout << sumABCD.measurement(27) << endl;
+  cout << "chi_2 of sum of A,B,C,D: " << sumABCD.chi_2() << endl;
+  
+    Data sumAB = datA + datB;
+    cout << "measurement of sum of A and B in bin 27: " << sumAB.measurement(27) << endl;
   return 0;
 }
