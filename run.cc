@@ -82,7 +82,7 @@ data.push_back(datD);
   cout << "measurement of experiment A,B,C,D in bin 27: " << datA.measurement(27) << ", " << datB.measurement(27) << ", " << datC.measurement(27) << ", " << datD.measurement(27) << endl;
  // check if the data from experiment A and B are compatible
     cout << "number of incompatible bins between A and B: " << datA.checkCompatibility(datB, 2) << endl;
-    sumAB = datA + datB;
+    Data sumAB = datA + datB;
     cout << "measurement of sum of A and B in bin 27: " << sumAB.measurement(27) << endl;
   return 0;
 }
