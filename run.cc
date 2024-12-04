@@ -96,6 +96,7 @@ data.push_back(datD);
   cout << "chi_2 of experiment D: " << datD.chi_2() << endl;
 
   Data sumABCD = datA + datB + datC + datD;
+  cout << sumABCD.measurement(27) << endl;
   cout << "chi_2 of sum of A,B,C,D: " << sumABCD.chi_2() << endl;
   
     Data sumAB = datA + datB;

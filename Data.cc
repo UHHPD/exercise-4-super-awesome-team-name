@@ -81,6 +81,7 @@ Data y;
    throw std::invalid_argument("Data objects must have the same size for addition.");
    y.m_data.resize(this->size());
    y.m_bins.resize(this->size());
+  y.m_bins = this->m_bins;
    y.m_error.resize(this->size());
         for (int i = 0; i < this->size(); ++i){
           double w_1 =1/pow(this->error(i),2);
