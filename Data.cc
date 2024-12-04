@@ -85,7 +85,7 @@ Data y;
         for (int i = 0; i < this->size(); ++i){
           double w_1 =1/pow(this->error(i),2);
           double w_2 =1/pow(in.error(i),2);
-       y.m_data[i] = (this->measurement(i)*(w_1 )+ in.measurement(i)* w_2/(w_1 + w_2));
+       y.m_data[i] = (this->measurement(i)*(w_1 )+ in.measurement(i)* w_2)/(w_1 + w_2);
             y.m_error[i] = sqrt(1/(w_1+w_2));
         }
         return y;
